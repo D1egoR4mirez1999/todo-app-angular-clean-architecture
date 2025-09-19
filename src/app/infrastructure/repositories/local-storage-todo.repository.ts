@@ -1,8 +1,6 @@
-// src/app/infrastructure/repositories/local-storage-todo.repository.ts
 import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
-import { Todo } from '../../domain/entities/todo.entity';
-import { TodoRepository } from '../../domain/repositories/todo.repository';
+import { TodoRepository, Todo } from '../../domain';
 
 @Injectable()
 export class LocalStorageTodoRepository extends TodoRepository {

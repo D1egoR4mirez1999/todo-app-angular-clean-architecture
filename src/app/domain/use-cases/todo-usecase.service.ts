@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-import { Todo } from '../entities/todo.entity';
-import { TodoRepository } from '../repositories/todo.repository';
+import { Todo, TodoRepository } from '..';
 
 @Injectable()
 export class TodoUseCaseService {

@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs';
-import { Todo } from '../entities/todo.entity';
-import { Crud } from '../models/crud.interface';
+import { Crud, Todo } from '..';
 
 export abstract class TodoRepository implements Crud<Todo> {
   abstract getAll(): Observable<Todo[]>;
