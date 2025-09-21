@@ -5,7 +5,7 @@ export abstract class TodoOutputLogic {
 }
 
 export interface TodoInputLogic extends Presenter<TodoOutputLogic> {
-  createTodo(): void;
+  createTodo(todo: Todo): void;
   processCreateResponse(todoRS: boolean): void;
   removeTodo(): void;
 }
