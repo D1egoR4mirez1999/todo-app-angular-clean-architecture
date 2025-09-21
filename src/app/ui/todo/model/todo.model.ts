@@ -1,8 +1,10 @@
 import { InjectionToken } from '@angular/core';
 import { Interactor, Presenter, Todo } from '../../../domain';
+import { FormControl } from '@angular/forms';
 
 export abstract class TodoOutputLogic {
   todo: Todo[] = [];
+  titleControl!: FormControl<string | null>;
 }
 
 export interface TodoInputLogic extends Presenter<TodoOutputLogic> {
