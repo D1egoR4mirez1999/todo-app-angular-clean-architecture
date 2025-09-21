@@ -1,8 +1,8 @@
-import { inject, Injectable } from '@angular/core';
+import { Inject, inject, Injectable } from '@angular/core';
 
 import { Todo } from '../../../domain';
-import { TodoInteractorLogicImpl } from '../interactor/todo.interactor';
 import {
+  INTERACTOR_LOGIC_TOKEN,
   TodoInputLogic,
   TodoInteractorLogic,
   TodoOutputLogic,
@@ -11,14 +11,19 @@ import {
 @Injectable()
 export class TodoPresenterLogicImpl implements TodoInputLogic {
   private view!: TodoOutputLogic;
-  private todoInteractor: TodoInteractorLogic = inject(TodoInteractorLogicImpl);
+
+  constructor(
+    @Inject(INTERACTOR_LOGIC_TOKEN) private interactor: TodoInteractorLogic
+  ) {
+    this.interactor.setPresenter(this);
+  }
 
   setView(view: TodoOutputLogic): void {
     this.view = view;
   }
 
   createTodo(todo: Todo): void {
-    this.todoInteractor.createTodo(todo);
+    this.interactor.createTodo(todo);
   }
 
   processCreateResponse(todoRS: boolean): void {

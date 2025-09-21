@@ -1,3 +1,4 @@
+import { InjectionToken } from '@angular/core';
 import { Interactor, Presenter, Todo } from '../../../domain';
 
 export abstract class TodoOutputLogic {
@@ -13,3 +14,10 @@ export interface TodoInputLogic extends Presenter<TodoOutputLogic> {
 export interface TodoInteractorLogic extends Interactor<TodoInputLogic> {
   createTodo(todo: Todo): void;
 }
+
+export const PRESENTER_LOGIC_TOKEN = new InjectionToken<TodoInputLogic>(
+  'TodoPresenterLogicImpl'
+);
+export const INTERACTOR_LOGIC_TOKEN = new InjectionToken<TodoInteractorLogic>(
+  'TodoInteractorLogicImpl'
+);
