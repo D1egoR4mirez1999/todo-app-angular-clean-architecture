@@ -3,7 +3,9 @@ import { Observable } from 'rxjs';
 import { Todo } from '../../domain';
 import { TodoUseCaseService } from '../use-cases';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TodoService {
   constructor(private todoUseCase: TodoUseCaseService) {}
 

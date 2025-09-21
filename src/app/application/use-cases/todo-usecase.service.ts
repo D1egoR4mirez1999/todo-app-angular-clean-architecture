@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Todo, TodoRepository } from '../../domain';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TodoUseCaseService {
   constructor(private todoRepository: TodoRepository) {}
 
