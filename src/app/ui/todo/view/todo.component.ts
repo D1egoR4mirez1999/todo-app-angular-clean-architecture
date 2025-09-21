@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Todo } from '../../../domain';
@@ -13,7 +13,7 @@ import {
   imports: [ReactiveFormsModule],
   templateUrl: './todo.component.html',
 })
-export class TodoComponent extends TodoOutputLogic {
+export class TodoComponent extends TodoOutputLogic implements OnInit {
   constructor(
     @Inject(PRESENTER_LOGIC_TOKEN) private presenter: TodoInputLogic,
     private fb: FormBuilder
@@ -29,6 +29,10 @@ export class TodoComponent extends TodoOutputLogic {
       Validators.minLength(1),
       Validators.maxLength(100),
     ]);
+  }
+
+  ngOnInit(): void {
+    this.presenter.getAllTodos();
   }
 
   createTodo(): void {

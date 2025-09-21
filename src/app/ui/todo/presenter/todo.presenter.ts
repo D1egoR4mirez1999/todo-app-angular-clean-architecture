@@ -18,6 +18,10 @@ export class TodoPresenterLogicImpl implements TodoInputLogic {
     this.interactor.setPresenter(this);
   }
 
+  getAllTodos(): void {
+    this.interactor.getAllTodos();
+  }
+
   setView(view: TodoOutputLogic): void {
     this.view = view;
   }
@@ -27,7 +31,13 @@ export class TodoPresenterLogicImpl implements TodoInputLogic {
   }
 
   processCreateResponse(todoRS: boolean): void {
-    console.log(todoRS);
+    if (todoRS) {
+      this.interactor.getAllTodos();
+    }
+  }
+
+  processGetAllResponse(todos: Todo[]): void {
+    this.view.todos = todos;
   }
 
   removeTodo(): void {

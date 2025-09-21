@@ -36,14 +36,29 @@
     </div>
   </div>
 
-  <!-- Lista de TODOs -->
   <div class="space-y-2">
-    <!-- TODO completado -->
-    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-md">
-      <input type="checkbox" checked class="w-4 h-4 text-blue-600" />
-      <span class="flex-1 text-gray-500 line-through"
-        >Completar el proyecto</span
+    @for(todo of todos; track todo.id) {
+    <div
+      [class]="
+        todo.completed
+          ? 'flex items-center gap-3 p-3 bg-gray-50 rounded-md'
+          : 'flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-md'
+      "
+    >
+      <input
+        type="checkbox"
+        [checked]="todo.completed"
+        class="w-4 h-4 text-blue-600"
+      />
+      <span
+        [class]="
+          todo.completed
+            ? 'flex-1 text-gray-500 line-through'
+            : 'flex-1 text-gray-800'
+        "
       >
+        {{ todo.title }}
+      </span>
       <button class="text-red-500 hover:text-red-700">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path
@@ -54,63 +69,27 @@
         </svg>
       </button>
     </div>
+    }@empty {
+    <div class="text-center py-8">
+      <div class="text-gray-400 mb-2">
+        <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            fill-rule="evenodd"
+            d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+      <p class="text-gray-500 text-lg font-medium">¡Todo despejado!</p>
+      <p class="text-gray-400 text-sm">No tienes tareas pendientes</p>
+    </div>
+    }
 
-    <!-- TODO pendiente -->
+    <!-- Footer con estadísticas -->
     <div
-      class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-md"
+      class="mt-6 pt-4 border-t border-gray-200 text-center text-sm text-gray-600"
     >
-      <input type="checkbox" class="w-4 h-4 text-blue-600" />
-      <span class="flex-1 text-gray-800">Revisar emails</span>
-      <button class="text-red-500 hover:text-red-700">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fill-rule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
-      </button>
+      <span>3 tareas pendientes • 1 completada</span>
     </div>
-
-    <!-- TODO pendiente -->
-    <div
-      class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-md"
-    >
-      <input type="checkbox" class="w-4 h-4 text-blue-600" />
-      <span class="flex-1 text-gray-800">Ir al supermercado</span>
-      <button class="text-red-500 hover:text-red-700">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fill-rule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- TODO pendiente -->
-    <div
-      class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-md"
-    >
-      <input type="checkbox" class="w-4 h-4 text-blue-600" />
-      <span class="flex-1 text-gray-800">Llamar al médico</span>
-      <button class="text-red-500 hover:text-red-700">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fill-rule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- Footer con estadísticas -->
-  <div
-    class="mt-6 pt-4 border-t border-gray-200 text-center text-sm text-gray-600"
-  >
-    <span>3 tareas pendientes • 1 completada</span>
   </div>
 </div>

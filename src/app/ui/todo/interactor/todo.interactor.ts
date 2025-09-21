@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { take } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Todo } from '../../../domain';
 import { TodoService } from '../../../application';
 
@@ -22,6 +22,16 @@ export class TodoInteractorLogicImpl implements TodoInteractorLogic {
       .subscribe({
         next: (todoRS) => this.presenter.processCreateResponse(todoRS),
         error: (error) => console.log(error),
+      });
+  }
+
+  getAllTodos(): void {
+    this.todoService
+      .getAll()
+      .pipe(take(1))
+      .subscribe({
+        next: (todoRS) => this.presenter.processGetAllResponse(todoRS),
+        error: (error) => console.log(error``),
       });
   }
 }
