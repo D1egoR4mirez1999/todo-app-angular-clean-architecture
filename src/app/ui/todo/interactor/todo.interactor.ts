@@ -15,6 +15,16 @@ export class TodoInteractorLogicImpl implements TodoInteractorLogic {
     this.presenter = presenter;
   }
 
+  deleteTodo(todoId: string): void {
+    this.todoService
+      .delete(todoId)
+      .pipe(take(1))
+      .subscribe({
+        next: (todoRS) => this.presenter.processDeleteTodoResponse(todoRS),
+        error: (error) => console.log(error),
+      });
+  }
+
   createTodo(todo: Todo): void {
     this.todoService
       .create(todo)

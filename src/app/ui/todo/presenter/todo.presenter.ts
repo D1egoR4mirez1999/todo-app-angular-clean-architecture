@@ -40,7 +40,13 @@ export class TodoPresenterLogicImpl implements TodoInputLogic {
     this.view.todos = todos;
   }
 
-  removeTodo(): void {
-    throw new Error('Method not implemented.');
+  deleteTodo(todoId: string): void {
+    this.interactor.deleteTodo(todoId);
+  }
+
+  processDeleteTodoResponse(todoRS: boolean): void {
+    if (todoRS) {
+      this.interactor.getAllTodos();
+    }
   }
 }

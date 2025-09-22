@@ -57,6 +57,10 @@ export class TodoComponent extends TodoOutputLogic implements OnInit {
     return Date.now().toString();
   }
 
+  deleteTodo(todoId: string): void {
+    this.presenter.deleteTodo(todoId);
+  }
+
   get isFormValid(): boolean {
     return this.titleControl.valid;
   }

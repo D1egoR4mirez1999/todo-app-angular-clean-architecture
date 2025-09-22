@@ -47,7 +47,7 @@ export class LocalStorageTodoRepository extends TodoRepository {
     const newTodos = todos.filter((t) => t.id !== id);
     this.saveToStorage(newTodos);
     this.todosSubject.next(newTodos);
-    return of(Boolean(void 0));
+    return of(true);
   }
 
   private loadFromStorage(): Todo[] {

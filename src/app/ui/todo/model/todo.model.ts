@@ -14,12 +14,14 @@ export interface TodoInputLogic extends Presenter<TodoOutputLogic> {
   processCreateResponse(todoRS: boolean): void;
   getAllTodos(): void;
   processGetAllResponse(todos: Todo[]): void;
-  removeTodo(): void;
+  deleteTodo(todoId: string): void;
+  processDeleteTodoResponse(todoRS: boolean): void;
 }
 
 export interface TodoInteractorLogic extends Interactor<TodoInputLogic> {
   createTodo(todos: Todo): void;
   getAllTodos(): void;
+  deleteTodo(todoId: string): void;
 }
 
 export const PRESENTER_LOGIC_TOKEN = new InjectionToken<TodoInputLogic>(
