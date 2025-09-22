@@ -28,12 +28,15 @@ export interface TodoInputLogic extends Presenter<TodoOutputLogic> {
   processGetAllResponse(todos: Todo[]): void;
   deleteTodo(todoId: string): void;
   processDeleteTodoResponse(todoRS: boolean): void;
+  updateTodo(todoId: string, todo: Todo): void;
+  proccessUpdateTodoResponse(todoRS: boolean): void;
 }
 
 export interface TodoInteractorLogic extends Interactor<TodoInputLogic> {
   createTodo(todos: Todo): void;
   getAllTodos(): void;
   deleteTodo(todoId: string): void;
+  updateTodo(todoId: string, todo: Todo): void;
 }
 
 export const PRESENTER_LOGIC_TOKEN = new InjectionToken<TodoInputLogic>(

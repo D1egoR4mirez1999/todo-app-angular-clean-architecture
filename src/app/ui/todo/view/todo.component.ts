@@ -60,4 +60,10 @@ export class TodoComponent extends TodoOutputLogic implements OnInit {
   deleteTodo(todoId: string): void {
     this.presenter.deleteTodo(todoId);
   }
+
+  toggleTodo(todoId: string, todo: Todo): void {
+    const todoToggled = { ...todo, completed: !todo.completed };
+
+    this.presenter.updateTodo(todoId, todoToggled);
+  }
 }

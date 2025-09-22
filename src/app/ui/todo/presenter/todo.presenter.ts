@@ -18,6 +18,16 @@ export class TodoPresenterLogicImpl implements TodoInputLogic {
     this.interactor.setPresenter(this);
   }
 
+  updateTodo(todoId: string, todo: Todo): void {
+    this.interactor.updateTodo(todoId, todo);
+  }
+
+  proccessUpdateTodoResponse(todoRS: boolean): void {
+    if (todoRS) {
+      this.interactor.getAllTodos();
+    }
+  }
+
   getAllTodos(): void {
     this.interactor.getAllTodos();
   }

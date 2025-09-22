@@ -48,6 +48,7 @@
       <input
         type="checkbox"
         [checked]="todo.completed"
+        (change)="toggleTodo(todo.id, todo)"
         class="w-4 h-4 text-blue-600"
       />
       <span
