@@ -60,21 +60,4 @@ export class TodoComponent extends TodoOutputLogic implements OnInit {
   deleteTodo(todoId: string): void {
     this.presenter.deleteTodo(todoId);
   }
-
-  get isFormValid(): boolean {
-    return this.titleControl.valid;
-  }
-
-  get titleError(): string | null {
-    if (this.titleControl.errors?.['required']) {
-      return 'El título es requerido';
-    }
-    if (this.titleControl.errors?.['minlength']) {
-      return 'El título debe tener al menos 1 carácter';
-    }
-    if (this.titleControl.errors?.['maxlength']) {
-      return 'El título no puede exceder 100 caracteres';
-    }
-    return null;
-  }
 }

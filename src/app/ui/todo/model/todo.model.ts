@@ -7,6 +7,18 @@ import { FormControl } from '@angular/forms';
 export abstract class TodoOutputLogic {
   todos: Todo[] = [];
   titleControl!: FormControl<string | null>;
+  get titleError(): string | null {
+    if (this.titleControl.errors?.['required']) {
+      return 'El título es requerido';
+    }
+    if (this.titleControl.errors?.['minlength']) {
+      return 'El título debe tener al menos 1 carácter';
+    }
+    if (this.titleControl.errors?.['maxlength']) {
+      return 'El título no puede exceder 100 caracteres';
+    }
+    return null;
+  }
 }
 
 export interface TodoInputLogic extends Presenter<TodoOutputLogic> {
