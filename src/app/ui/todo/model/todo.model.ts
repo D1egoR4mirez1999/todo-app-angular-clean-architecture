@@ -19,6 +19,13 @@ export abstract class TodoOutputLogic {
     }
     return null;
   }
+  get pendingTodos(): number {
+    return this.todos.filter((todo) => !todo.completed).length;
+  }
+
+  get completedTodos(): number {
+    return this.todos.filter((todo) => todo.completed).length;
+  }
 }
 
 export interface TodoInputLogic extends Presenter<TodoOutputLogic> {

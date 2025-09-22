@@ -89,11 +89,14 @@
     </div>
     }
 
-    <!-- Footer con estadísticas -->
     <div
       class="mt-6 pt-4 border-t border-gray-200 text-center text-sm text-gray-600"
     >
-      <span>3 tareas pendientes • 1 completada</span>
+      @if (pendingTodos) {
+      <span>{{ pendingTodos }} tareas pendientes </span>
+      } @if (completedTodos) {
+      <span> • {{ completedTodos }} completada </span>
+      }
     </div>
   </div>
 </div>
