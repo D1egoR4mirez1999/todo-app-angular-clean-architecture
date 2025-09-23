@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { TodoRepository } from '../../domain';
 import { Todo } from '../../domain';
-import { TodoUseCaseService } from './todo-usecase.service';
+import { TodoUseCase } from './todo-usecase';
 
-describe('TodoUseCaseService', () => {
-  let service: TodoUseCaseService;
+describe('TodoUseCase', () => {
+  let service: TodoUseCase;
   let todoRepositorySpy: jasmine.SpyObj<TodoRepository>;
 
   // Mock data para las pruebas
@@ -38,12 +38,12 @@ describe('TodoUseCaseService', () => {
 
     TestBed.configureTestingModule({
       providers: [
-        TodoUseCaseService,
+        TodoUseCase,
         { provide: TodoRepository, useValue: spy },
       ],
     });
 
-    service = TestBed.inject(TodoUseCaseService);
+    service = TestBed.inject(TodoUseCase);
     todoRepositorySpy = TestBed.inject(
       TodoRepository
     ) as jasmine.SpyObj<TodoRepository>;

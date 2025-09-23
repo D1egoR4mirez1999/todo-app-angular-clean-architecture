@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Todo } from '../../domain';
-import { TodoUseCaseService } from '../use-cases';
+import { Todo, TodoRepository } from '../../domain';
+import { TodoUseCase } from '../use-cases';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TodoService {
-  constructor(private todoUseCase: TodoUseCaseService) {}
+export class TodoService implements TodoRepository {
+  constructor(private todoUseCase: TodoUseCase) {}
 
   getAll(): Observable<Todo[]> {
     return this.todoUseCase.getAll();

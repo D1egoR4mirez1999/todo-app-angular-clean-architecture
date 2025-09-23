@@ -5,7 +5,7 @@ import { Todo, TodoRepository } from '../../domain';
 @Injectable({
   providedIn: 'root',
 })
-export class TodoUseCaseService {
+export class TodoUseCase implements TodoRepository {
   constructor(private todoRepository: TodoRepository) {}
 
   getAll(): Observable<Todo[]> {

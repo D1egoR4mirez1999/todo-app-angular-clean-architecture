@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { TodoService } from './todo.service';
-import { TodoUseCaseService } from '../use-cases';
+import { TodoUseCase } from '../use-cases';
 import { Todo } from '../../domain';
 
 describe('TodoService', () => {
   let service: TodoService;
-  let todoUseCaseServiceSpy: jasmine.SpyObj<TodoUseCaseService>;
+  let todoUseCaseServiceSpy: jasmine.SpyObj<TodoUseCase>;
 
   // Mock data para las pruebas
   const mockTodo: Todo = {
@@ -27,8 +27,8 @@ describe('TodoService', () => {
   ];
 
   beforeEach(() => {
-    // Crear un spy object para TodoUseCaseService
-    const spy = jasmine.createSpyObj('TodoUseCaseService', [
+    // Crear un spy object para TodoUseCase
+    const spy = jasmine.createSpyObj('TodoUseCase', [
       'getAll',
       'getById',
       'create',
@@ -37,13 +37,13 @@ describe('TodoService', () => {
     ]);
 
     TestBed.configureTestingModule({
-      providers: [TodoService, { provide: TodoUseCaseService, useValue: spy }],
+      providers: [TodoService, { provide: TodoUseCase, useValue: spy }],
     });
 
     service = TestBed.inject(TodoService);
     todoUseCaseServiceSpy = TestBed.inject(
-      TodoUseCaseService
-    ) as jasmine.SpyObj<TodoUseCaseService>;
+      TodoUseCase
+    ) as jasmine.SpyObj<TodoUseCase>;
   });
 
   it('should be created', () => {
